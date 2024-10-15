@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('myths', function (Blueprint $table) {
+        Schema::create('gods', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
 
-            $table->string('title');
+            $table->string('name');
             $table->string('description');
+            $table->string('domain');
+            $table->string('pantheon');
         });
     }
 
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('myths');
+        Schema::dropIfExists('gods');
     }
 };

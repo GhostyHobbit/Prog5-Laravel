@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GodController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,13 +17,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/myths', function() {
-   return view('myths');
-})->name('myths');
+Route::get('/gods', [GodController::class, 'index'])->name('gods');
+Route::get('/gods/{id}', [GodController::class, 'show'])->name('god_detail');
 
-Route::get('/myths/{id}', function(string $id) {
-    return view('myths-detail', compact('id'));
-})->name('myth_detail');
+//Route::get('/gods/{id}', function(string $id) {
+//    return view('myths-detail', compact('id'));
+//})->name('god_detail');
 
 Route::get('/profile', function() {
     $email = 'chickenwing@gmail.com';

@@ -10,7 +10,7 @@
 <body>
     <nav>
         <a href="{{ url(route('home')) }}">Home</a>
-        <a href="{{ url(route('myths')) }}">Myths</a>
+        <a href="{{ url(route('gods')) }}">Gods</a>
         <a href="{{ url(route('profile')) }}">Profile</a>
         @if (Route::has('login'))
                 @auth
