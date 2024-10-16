@@ -33,8 +33,7 @@ class GodsController extends Controller
         return redirect(route('gods.index'));
     }
     //display details
-    public function show($id) {
-        $god = God::find($id);
+    public function show(God $god) {
         return view('gods-detail', compact('god'));
     }
 
