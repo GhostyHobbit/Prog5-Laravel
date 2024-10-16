@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\GodsController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\GodController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/gods', [GodController::class, 'index'])->name('gods');
-Route::get('/gods/{id}', [GodController::class, 'show'])->name('god_detail');
+//Route::get('/gods', [GodsController::class, 'index'])->name('gods');
+//Route::get('/gods/{id}', [GodsController::class, 'show'])->name('god_detail');
+Route::resource('gods', GodsController::class);
 
 //Route::get('/gods/{id}', function(string $id) {
 //    return view('myths-detail', compact('id'));
