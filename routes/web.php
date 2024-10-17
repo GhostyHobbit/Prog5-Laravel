@@ -17,20 +17,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Route::get('/gods', [GodsController::class, 'index'])->name('gods');
-//Route::get('/gods/{id}', [GodsController::class, 'show'])->name('god_detail');
 Route::resource('gods', GodsController::class);
 
-//Route::get('/gods/{id}', function(string $id) {
-//    return view('myths-detail', compact('id'));
-//})->name('god_detail');
-
-Route::get('/profile', function() {
-    $email = 'chickenwing@gmail.com';
-    return view('profile', [
-        'email' => $email
-    ]);
-})->name('profile');
+//Route::get('/profile', function() {
+//    $email = 'chickenwing@gmail.com';
+//    return view('profile', [
+//        'email' => $email
+//    ]);
+//})->name('profile');
 
 Route::get('/products/{id}', function(string $id) {
     return view('products', [
