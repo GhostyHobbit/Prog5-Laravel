@@ -64,13 +64,34 @@ class GodsController extends Controller implements HasMiddleware
     //show form to edit
     public function edit(God $god)
     {
-        //
+        return view('god-edit', compact('god'));
     }
 
     //update into database
     public function update(Request $request, God $god)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'domain' => 'required',
+            'pantheon' => 'required',
+        ],
+            [
+                'name.required' => 'Name is required',
+                'name.unique' => 'This god already exists on the website',
+                'description.required' => 'Description is required',
+                'domain.required' => 'Domain is required',
+                'pantheon.required' => 'Pantheon is required',
+            ]);
+
+        $god->name = $request->input('name');
+        $god->description = $request->input('description');
+        $god->domain = $request->input('domain');
+        $god->pantheon = $request->input('pantheon');
+        $god->user_id = \Auth::user()->id;
+        $god->save();
+
+        return redirect(route('gods.index'));
     }
 
     //delete out of database
