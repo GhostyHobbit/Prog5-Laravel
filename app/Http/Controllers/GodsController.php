@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\God;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class GodsController extends Controller
+class GodsController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('auth', except: ['index']),
+        ];
+    }
+
     //normal index view
     public function index()
     {
@@ -23,11 +32,26 @@ class GodsController extends Controller
     //store to database
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:gods',
+            'description' => 'required',
+            'domain' => 'required',
+            'pantheon' => 'required',
+        ],
+        [
+            'name.required' => 'Name is required',
+            'name.unique' => 'This god already exists on the website',
+            'description.required' => 'Description is required',
+            'domain.required' => 'Domain is required',
+            'pantheon.required' => 'Pantheon is required',
+        ]);
+
         $god = new God();
         $god->name = $request->input('name');
         $god->description = $request->input('description');
         $god->domain = $request->input('domain');
         $god->pantheon = $request->input('pantheon');
+        $god->user_id = \Auth::user()->id;
         $god->save();
 
         return redirect(route('gods.index'));

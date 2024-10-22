@@ -30,4 +30,7 @@
 * nieuwe routes voor (de meeste) pagina's
 * database toegevoegd (migrate)
 
+## 17-10-2024
+* one-to-many relatie aangemaakt tussen users en posts
+
 
