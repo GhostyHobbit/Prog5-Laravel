@@ -54,7 +54,13 @@ class GodsController extends Controller implements HasMiddleware
         $god->domain = $request->input('domain');
         $god->pantheon = $request->input('pantheon');
         $god->user_id = \Auth::user()->id;
-        $god->save();
+
+        $succes = $god->save();
+        if ($succes) {
+            foreach ($request->input('tags') as $tag_id) {
+                $god->tags()->attach($tag_id);
+            }
+        }
 
         return redirect(route('gods.index'));
     }
@@ -91,7 +97,6 @@ class GodsController extends Controller implements HasMiddleware
         $god->domain = $request->input('domain');
         $god->pantheon = $request->input('pantheon');
         $god->user_id = \Auth::user()->id;
-        $god->save();
 
         return redirect(route('gods.index'));
     }
