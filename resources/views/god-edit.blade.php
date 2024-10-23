@@ -25,6 +25,13 @@
         <label for="pantheon">Pantheon</label>
         <input id="pantheon" name="pantheon" value="{{ $god->pantheon }}">
 
+        <label for="tags[]">Tags</label>
+        <select id="tags[]" name="tags[]" multiple>
+            @foreach($tags as $tag)
+                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+            @endforeach
+        </select>
+
         <button type="submit">Save</button>
     </form>
 </x-layout>

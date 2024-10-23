@@ -72,7 +72,8 @@ class GodsController extends Controller implements HasMiddleware
     //show form to edit
     public function edit(God $god)
     {
-        return view('god-edit', compact('god'));
+        $tags = Tag::all();
+        return view('god-edit', compact('god'), compact('tags'));
     }
 
     //update into database
@@ -98,6 +99,11 @@ class GodsController extends Controller implements HasMiddleware
         $god->pantheon = $request->input('pantheon');
         $god->user_id = \Auth::user()->id;
 
+        $succes = $god->save();
+        if ($succes) {
+            $god->tags()->sync($request->input('tags'));
+        }
+
         return redirect(route('gods.index'));
     }
 
@@ -108,6 +114,7 @@ class GodsController extends Controller implements HasMiddleware
     //delete out of database
     public function destroy(God $god)
     {
+        $god->tags()->detach();
         $god->delete();
 
         return redirect(route('gods.index'));
