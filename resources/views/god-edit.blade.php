@@ -28,7 +28,7 @@
         <label for="tags[]">Tags</label>
         <select id="tags[]" name="tags[]" multiple>
             @foreach($tags as $tag)
-                <option value="{{ $tag->id }}">{{ $tag->title }}</option>
+                <option value="{{ $tag->id }}" {{ $god->tags->contains($tag->id) ? "selected" : ""}}>{{ $tag->title }}</option>
             @endforeach
         </select>
 
