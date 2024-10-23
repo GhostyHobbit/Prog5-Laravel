@@ -18,13 +18,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('gods', GodsController::class);
-
-//Route::get('/profile', function() {
-//    $email = 'chickenwing@gmail.com';
-//    return view('profile', [
-//        'email' => $email
-//    ]);
-//})->name('profile');
+Route::get('/gods/{god}/delete', [GodsController::class, 'delete'])->name('gods.delete');
 
 Route::get('/products/{id}', function(string $id) {
     return view('products', [

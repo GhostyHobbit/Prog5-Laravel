@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\God;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
@@ -26,7 +27,8 @@ class GodsController extends Controller implements HasMiddleware
     //form for create
     public function create()
     {
-        return view('god_create');
+        $tags = Tag::all();
+        return view('god_create', compact('tags'));
     }
 
     //store to database
@@ -94,9 +96,15 @@ class GodsController extends Controller implements HasMiddleware
         return redirect(route('gods.index'));
     }
 
+    public function delete(God $god) {
+        return view('gods-delete', compact('god'));
+    }
+
     //delete out of database
     public function destroy(God $god)
     {
-        //
+        $god->delete();
+
+        return redirect(route('gods.index'));
     }
 }
