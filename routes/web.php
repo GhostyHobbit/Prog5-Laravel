@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GodsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -20,10 +21,5 @@ Route::middleware('auth')->group(function () {
 Route::resource('gods', GodsController::class);
 Route::get('/gods/{god}/delete', [GodsController::class, 'delete'])->name('gods.delete');
 
-Route::get('/products/{id}', function(string $id) {
-    return view('products', [
-        'id' => $id
-    ]);
-});
-
+Route::get('/admin_dash', [AdminController::class, 'index'])->name('admin.index');
 require __DIR__.'/auth.php';

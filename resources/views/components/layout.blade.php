@@ -20,6 +20,9 @@
                     >
                         Dashboard
                     </a>
+                @if(\Auth::user()->admin)
+                    <a href="{{ route('admin.index') }}">Admin Dash</a>
+                @endif
                 @else
                     <a
                         href="{{ route('login') }}"
