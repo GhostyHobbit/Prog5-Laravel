@@ -32,5 +32,24 @@
 
 ## 17-10-2024
 * one-to-many relatie aangemaakt tussen users en posts
+* geswitched van myths (ERD) naar gods om makkelijker data in te kunnen vullen
+
+## 22-10-2024
+* edit functie gemaakt
+* update functie werkend gemaakt
+* user middelware toegepast
+* formulier validatie
+
+## 23-10-2024
+* many-to-many geïmplementeerd met tags
+* crud tags toegevoegd
+* meerdere tags select toegevoegd in create
+
+## 28-10-2024
+* post edit user_id fix (kon ook editen vanaf een ander account)
+* admin role toegevoegd met admin dashboard
+* admin middleware aangemaakt tegen deeplinken
+* toggle functie op dashboard voor posts (verbergt de post ook in de overview)
+
 
 

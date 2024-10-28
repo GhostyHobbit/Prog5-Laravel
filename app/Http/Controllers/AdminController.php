@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\God;
 use App\Models\Tag;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 
 class AdminController extends Controller
 {
