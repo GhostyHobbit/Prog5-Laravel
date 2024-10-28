@@ -5,10 +5,10 @@
         <p>{{ $tag->title }}</p>
     @endforeach
 
-    @if(\Auth::user()->id = $god->user->name)
-        <a href="{{ url(route('gods.edit', $god->id)) }}">Edit</a>
-        <a href="{{ url(route('gods.delete', $god->id)) }}">Delete</a>
-    @else
-        <p>You can't edit this post</p>
-    @endif
+    @auth
+        @if(\Auth::user()->id === $god->user->id)
+            <a href="{{ url(route('gods.edit', $god->id)) }}">Edit</a>
+            <a href="{{ url(route('gods.delete', $god->id)) }}">Delete</a>
+        @endif
+    @endauth
 </x-layout>
