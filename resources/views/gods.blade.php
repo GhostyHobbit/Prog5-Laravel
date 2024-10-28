@@ -9,6 +9,8 @@
     @endif
 
     @foreach($gods as $god)
-        <x-gods :god="$god"/>
+        @if($god->active)
+            <x-gods :god="$god"/>
+        @endif
     @endforeach
 </x-layout>

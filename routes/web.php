@@ -24,7 +24,7 @@ Route::get('/gods/{god}/delete', [GodsController::class, 'delete'])->name('gods.
 
 Route::group(['middleware' => ['admin']], function () {
     Route::get('/admin_dash', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/admin_dash/{god}/toggle', [AdminController::class, 'toggle'])->name('admin.toggle');
     // Other admin routes
 });
-//Route::get('/admin_dash', [AdminController::class, 'index'])->name('admin.index');
 require __DIR__.'/auth.php';

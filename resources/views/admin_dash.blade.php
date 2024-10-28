@@ -18,11 +18,16 @@
             <th>{{ $god->pantheon }}</th>
             <th>{{ $god->user->name }}</th>
             <th>
-                @if($god->active)
-                    Active
-                @else
-                    Not active
-                @endif
+                <form action="{{ url(route('admin.toggle', $god->id)) }}" method="GET">
+                    @csrf
+                    <button type="submit">
+                        @if($god->active)
+                            Active
+                        @else
+                            Not active
+                        @endif
+                    </button>
+                </form>
             </th>
         </tr>
     @endforeach
