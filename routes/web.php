@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GodsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -21,5 +22,9 @@ Route::middleware('auth')->group(function () {
 Route::resource('gods', GodsController::class);
 Route::get('/gods/{god}/delete', [GodsController::class, 'delete'])->name('gods.delete');
 
-Route::get('/admin_dash', [AdminController::class, 'index'])->name('admin.index');
+Route::group(['middleware' => ['admin']], function () {
+    Route::get('/admin_dash', [AdminController::class, 'index'])->name('admin.index');
+    // Other admin routes
+});
+//Route::get('/admin_dash', [AdminController::class, 'index'])->name('admin.index');
 require __DIR__.'/auth.php';
