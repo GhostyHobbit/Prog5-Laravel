@@ -18,10 +18,20 @@ class GodsController extends Controller implements HasMiddleware
     }
 
     //normal index view
-    public function index()
+    public function index(Request $request)
     {
+        $tags = Tag::all();
         $gods = God::all();
-        return view('gods', compact('gods'));
+
+        if ($request->input('tag') != null && $request->input('tag') != 'null') {
+            $tagId = $request->input('tag');
+            $gods = God::whereHas('tags', function($query) use ($tagId){
+                $query->where('tag_id', $tagId);
+            })->get();
+            return view('gods', compact('gods'), compact('tags'));
+        }
+
+        return view('gods', compact('gods'), compact('tags'));
     }
 
     //form for create

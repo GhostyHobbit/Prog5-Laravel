@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
-    public function god(): BelongsToMany{
+    public function gods(): BelongsToMany{
         return $this->belongsToMany(God::class);
     }
 }
