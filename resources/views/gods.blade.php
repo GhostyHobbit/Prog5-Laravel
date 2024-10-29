@@ -20,6 +20,13 @@
         <button type="submit">Filter</button>
     </form>
 
+    <form action="{{ url(route('gods.index')) }}" method="GET">
+        @csrf
+        <label for="search">Filter on search</label>
+        <input id="search" name="search" placeholder="Search"/>
+        <button type="submit">Filter</button>
+    </form>
+
     @foreach($gods as $god)
         @if($god->active)
             <x-gods :god="$god"/>

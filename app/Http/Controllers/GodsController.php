@@ -28,7 +28,10 @@ class GodsController extends Controller implements HasMiddleware
             $gods = God::whereHas('tags', function($query) use ($tagId){
                 $query->where('tag_id', $tagId);
             })->get();
-            return view('gods', compact('gods'), compact('tags'));
+        }
+
+        if ($request->input('search') != null && $request->input('search') != 'null') {
+            $gods = God::where('description', 'like', '%' . $request->input('search') . '%')->orWhere('domain', 'like', '%' . $request->input('search') . '%')->get();
         }
 
         return view('gods', compact('gods'), compact('tags'));
