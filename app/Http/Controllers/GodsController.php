@@ -85,8 +85,13 @@ class GodsController extends Controller implements HasMiddleware
     //show form to edit
     public function edit(God $god)
     {
-        $tags = Tag::all();
-        return view('god-edit', compact('god'), compact('tags'));
+        if ($god->user_id === \Auth::user()->id || \Auth::user()->admin) {
+            $tags = Tag::all();
+            return view('god-edit', compact('god'), compact('tags'));
+        } else {
+            return redirect(url(route('gods.show', compact('god'))));
+        }
+
     }
 
     //update into database
