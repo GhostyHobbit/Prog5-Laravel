@@ -108,7 +108,12 @@ class GodsController extends Controller implements HasMiddleware
     }
 
     public function delete(God $god) {
-        return view('gods-delete', compact('god'));
+        $count = God::where('user_id', \Auth::id())->count();
+        if ($count > 3) {
+            return view('gods-delete', compact('god'));
+        } else {
+            return view('count_error');
+        }
     }
 
     //delete out of database
