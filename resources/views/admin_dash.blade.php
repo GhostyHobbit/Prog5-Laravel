@@ -18,7 +18,7 @@
             <th>{{ $god->pantheon }}</th>
             <th>{{ $god->user->name }}</th>
             <th>
-                <form action="{{ url(route('admin.toggle', $god->id)) }}" method="GET">
+                <form action="{{ url(route('admin.toggle', $god->id)) }}" method="POST">
                     @csrf
                     <button type="submit">
                         @if($god->active)

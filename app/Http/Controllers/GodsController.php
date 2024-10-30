@@ -23,10 +23,10 @@ class GodsController extends Controller implements HasMiddleware
         $tags = Tag::all();
         $gods = God::all();
 
-        if ($request->input('tag') != null && $request->input('tag') != 'null') {
-            $tagId = $request->input('tag');
-            $gods = God::whereHas('tags', function($query) use ($tagId){
-                $query->where('tag_id', $tagId);
+        if ($request->input('tags') != null && $request->input('tags')[0] != 'null') {
+            $tagIds = $request->input('tags');
+            $gods = God::whereHas('tags', function($query) use ($tagIds){
+                $query->whereIn('tag_id', $tagIds);
             })->get();
         }
 

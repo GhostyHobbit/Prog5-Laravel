@@ -10,9 +10,9 @@
 
     <form action="{{ url(route('gods.index')) }}" method="GET">
         @csrf
-        <label for="tag">Filter by tags</label>
-        <select id="tag" name="tag">
-            <option value="null" selected>Filter</option>
+        <label for="tags[]">Filter by tags</label>
+        <select id="tags[]" name="tags[]" multiple>
+            <option value="null" selected>No filter</option>
             @foreach($tags as $tag)
                 <option value="{{ $tag->id }}">{{ $tag->title }}</option>
             @endforeach
@@ -24,7 +24,7 @@
         @csrf
         <label for="search">Filter on search</label>
         <input id="search" name="search" placeholder="Search"/>
-        <button type="submit">Filter</button>
+        <button type="submit">Search</button>
     </form>
 
     @foreach($gods as $god)
