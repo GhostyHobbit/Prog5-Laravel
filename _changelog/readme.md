@@ -51,5 +51,18 @@
 * admin middleware aangemaakt tegen deeplinken
 * toggle functie op dashboard voor posts (verbergt de post ook in de overview)
 
+## 29-10-2024
+* diepere validatie toegevoegd
+* filteren op tag toegevoegd
+* zoek functie toegevoegd
+* deeplink edit bug fix
+
+## 30-10-2024
+* filteren op meerdere tags tegelijk
+* Tailwind CSS toegevoegd (met AI)
+* kleuren schema aangepast
+* website detail werk (description toevoegen op detail pagina,
+extra informatie op de homepagina, detail werk aan kleuren
+op knoppen etc)
 
 
