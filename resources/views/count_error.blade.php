@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex flex-col items-center justify-center h-screen p-4">
+    <div class="flex flex-col items-center justify-center h-screen p-4 bg-blue-50 dark:bg-gray-800 shadow-lg rounded-lg">
         <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">Attention</h1>
         <p class="text-lg text-gray-600 dark:text-gray-300 text-center">
             You need to have three posts created before you can delete this.

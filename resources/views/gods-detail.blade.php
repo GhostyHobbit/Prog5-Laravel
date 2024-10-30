@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+    <div class="container mx-auto p-6 bg-blue-50 dark:bg-gray-800 shadow-lg rounded-lg">
         <h1 class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">{{ $god->name }}</h1>
 
         <div class="mb-4">
