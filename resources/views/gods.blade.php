@@ -9,6 +9,9 @@
                 <a href="{{ url(route('gods.create')) }}" class="rounded-md px-3 py-1 text-gray-800 bg-blue-200 dark:bg-gray-700 dark:text-gray-100 ring-1 ring-transparent transition hover:bg-blue-300 dark:hover:bg-gray-600 focus:outline-none focus-visible:ring-[#FF2D20]">
                     Add New God
                 </a>
+                @if(\Auth::user()->admin)
+                    <a href="{{ route('tags.create') }}" class="rounded-md px-3 py-1 m-2 text-gray-800 bg-blue-200 dark:bg-gray-700 dark:text-gray-100 ring-1 ring-transparent transition hover:bg-blue-300 dark:hover:bg-gray-600 focus:outline-none focus-visible:ring-[#FF2D20]">Create Tag</a>
+                @endif
             @else
                 <p class="mb-4 text-gray-600 dark:text-gray-300">Log in to add your own!</p>
             @endauth

@@ -12,7 +12,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+//        return view('admin_dash');
     }
 
     /**
@@ -20,7 +20,8 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        $tags = Tag::all();
+        return view('tag_create');
     }
 
     /**
@@ -28,7 +29,17 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|unique:tags',
+        ],
+            [
+                'name.required' => 'Tag name is required',
+            ]);
+        $tag = new Tag();
+        $tag->title = $request->input('name');
+        $tag->save();
+
+        return redirect(route('gods.index'));
     }
 
     /**

@@ -31,7 +31,9 @@ class GodsController extends Controller implements HasMiddleware
         }
 
         if ($request->input('search') != null && $request->input('search') != 'null') {
-            $gods = God::where('description', 'like', '%' . $request->input('search') . '%')->orWhere('domain', 'like', '%' . $request->input('search') . '%')->get();
+            $gods = God::where('description', 'like', '%' . $request->input('search') . '%')
+                ->orWhere('domain', 'like', '%' . $request->input('search') . '%')
+                ->orWhere('name', 'like', '%' . $request->input('search') . '%')->get();
         }
 
         return view('gods', compact('gods'), compact('tags'));

@@ -1,0 +1,28 @@
+<x-layout>
+    <div class="container mx-auto p-6 bg-blue-50 dark:bg-gray-800 shadow-lg rounded-lg">
+        <h1 class="text-3xl font-bold mb-6">Add New God</h1>
+
+        @if ($errors->any())
+            <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <form action="{{ url(route('tags.store')) }}" method="POST" class="space-y-4">
+            @csrf
+
+            <div>
+                <label for="name" class="block font-semibold text-gray-700 dark:text-gray-300">Tag</label>
+                <input id="name" name="name" class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 bg-gray-50 dark:bg-gray-700 dark:border-gray-600 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500" required />
+            </div>
+
+            <button type="submit" class="mt-4 px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                Save
+            </button>
+        </form>
+    </div>
+</x-layout>
