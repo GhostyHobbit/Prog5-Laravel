@@ -65,4 +65,8 @@
 extra informatie op de homepagina, detail werk aan kleuren
 op knoppen etc)
 
+## 31-10-2024
+* Admin tag create en delete gemaakt
+  (mensen kunnen nu tags aanvragen bij de admin)
+
 
